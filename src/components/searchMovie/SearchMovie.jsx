@@ -3,24 +3,15 @@ import React, { useState, useEffect } from "react";
 const MovieSearch = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movieSearchResults, setMovieSearchResults] = useState("");
-  const [imdbID, setImdbID] = useState("");
+  // const [imdbID, setImdbID] = useState("");
   //   const [reviewData, setReviewData] = useState("");
   //   const [review, setReview] = useState("");
 
   const handleFetch = () => {
-    fetch(
-      `https://www.omdbapi.com/?apikey=dde3f76d&t=${searchTerm}&plot=full/`,
-      {
-        method: "GET",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          Authorization: props.token,
-        }),
-      }
-    )
+    fetch(`https://www.omdbapi.com/?apikey=dde3f76d&t=${searchTerm}&plot=full/`)
       .then((res) => res.json())
       .then((jsonData) => {
-        movieSearchResults(jsonData);
+        setMovieSearchResults(jsonData);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -35,10 +26,16 @@ const MovieSearch = (props) => {
         placeholder="Search for Movie Here"
         onInput={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={handleFetch()}>Search</button>
+      <button onClick={handleFetch}>Search</button>
       {movieSearchResults && (
         <div>
-          <img src={movieSearchResults.Posters} alt="movie poster" />
+          <img
+            src={
+              "https://image.tmdb.org/t/p/w500/8NUM43rtQSt0chumXGJPvnYb01I.jpg/8NUM43rtQSt0chumXGJPvnYb01I.jpg"
+            }
+            //base options with whatever width...https://image.tmdb.org/t/p/w500 ... fetch ... photoPath, setPhotoPath (null or "")(`https://image.tmdb.org/t/p/w500${data.poster_path}`)...json response
+          />
+          {/* <img src={movieSearchResults.Poster} alt="movie poster" /> */}
           <h2>Title</h2>
           <h6>{movieSearchResults.Title}</h6>
           <h4>Plot</h4>

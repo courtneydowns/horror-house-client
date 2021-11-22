@@ -3,7 +3,7 @@ import PlaceholderImage from "../../assets/placeholder-profile-pic.png";
 
 const UploadingProfile = (props) => {
   const [image, setImage] = useState("");
-  const { setprofileImage } = props;
+  const { setProfilePhoto } = props;
 
   const UploadImage = async (e) => {
     const files = e.target.files;
@@ -20,7 +20,7 @@ const UploadingProfile = (props) => {
     const File = await res.json();
 
     setImage(File.secure_url);
-    setprofileImage(File.secure_url);
+    setProfilePhoto(File.secure_url);
   };
 
   return (

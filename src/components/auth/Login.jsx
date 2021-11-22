@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 const Login = (props) => {
-  // const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [toggle, setToggle] = useState(true);
+  // const [toggle, setToggle] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ const Login = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (!data.sessionToken) {
           alert("Username or Password is incorrect. Please try again.");
           return;
@@ -37,43 +38,38 @@ const Login = (props) => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="login-register">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            onChange={(e) => setUsername(e.target.value)}
-            name="username"
-            required
-            value={username}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            value={password}
-            required
-            type={toggle === true ? "password" : "text"}
-          />
-          <i
-            className={
-              toggle === true
-                ? "far fa-eye password-icon"
-                : "far fa-eye-slash password-icon"
-            }
-            onClick={() => setToggle(!toggle)}
-          />
-        </form>
-        <button id="auth-login" type="submit">
-          Login
-        </button>
-        <p className="auth-toggle">
-          Don't have an account?{" "}
-          <Link className="auth-toggle-link" to="/signup" variant="body2">
-            Sign up
-          </Link>
-        </p>
+    <div>
+      <h3>Login</h3>
+      <div className="wrapper">
+        <div className="login-register">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Username</label>
+            <input
+              type="username"
+              onChange={(e) => setUsername(e.target.value)}
+              name="username"
+              required
+              value={username}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              required
+              value={password}
+            />
+            <button id="auth-login" type="submit">
+              Login
+            </button>
+          </form>{" "}
+          <p className="auth-toggle">
+            Don't have an account?{" "}
+            <Link className="auth-toggle-link" to="/register" variant="body2">
+              Sign up
+            </Link>
+          </p>
+        </div>{" "}
       </div>
     </div>
   );

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Auth from "./components/auth/Auth";
-import Sitebar from "./components/sitebar/Sitebar";
+// import Sitebar from "./components/sitebar/Sitebar";
 import Homepage from "./components/homepage/Homepage";
-import Signup from "./components/auth/Signup";
-import Login from "./components/auth/Login";
+import SearchMovie from "./components/searchMovie/SearchMovie";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -33,15 +32,49 @@ function App() {
       <Auth token={sessionToken} updateToken={updateToken} />
     );
   };
+  // {!sessionToken && <Sitebar clickLogout={clearToken} />}
+  {
+    /* <Sitebar clickLogout={clearToken} /> */
+  }
 
   return (
-    <div className="App">
-      {!!sessionToken && <Sitebar clickLogout={clearToken} />}
-      <Routes>
-        <Route path="/signup" element={<Signup token={updateToken} />} />
-        <Route path="/" element={<Login updateToken={updateToken} />} />
-        <Route path="/home" element={<Homepage token={sessionToken} />} />
-      </Routes>
+    <div>
+      {/* <Auth token={sessionToken} updateToken={updateToken} /> */}
+      <Switch>
+        <Route exact path="/">
+          {protectedViews()}
+        </Route>
+        <Route exact path="/home">
+          <Homepage token={sessionToken} />
+        </Route>
+        <Route exact path="/search">
+          <SearchMovie />
+        </Route>
+        {/* <Route exact path="/profile">
+                <ViewProfile token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/characters">
+                <Characters token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/magical-objects">
+                <MagicalObjects token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/spells">
+                <Spells token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/potion-ingredients">
+                <PotionIngredients token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/potions">
+                <Potions token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/wand-cores">
+                <WandCore token={this.state.sessionToken} />
+              </Route> */}
+        {/* <Route exact path="/wand-wood">
+                <WandWood token={this.state.sessionToken} />
+              </Route> */}
+      </Switch>
     </div>
   );
 }
