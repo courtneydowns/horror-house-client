@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [toggle, setToggle] = useState(true);
 
-  let history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/user/login`, {
+    fetch(`http://localhost:3000/user/`, {
+      //1
       method: "POST",
-      body: JSON.stringify({ user: { email: email, password: password } }),
+      body: JSON.stringify({
+        user: { username: username, password: password },
+      }),
       headers: new Headers({
         "Content-Type": "application/json",
       }),
@@ -24,9 +25,8 @@ const Login = (props) => {
           alert("Username or Password is incorrect. Please try again.");
           return;
         }
-        history.push("/home");
         props.updateToken(data.sessionToken);
-        localStorage.setItem("profilePhoto", data.user.profilePhoto);
+        localStorage.setItem("profileImage", data.user.profileImage);
         localStorage.setItem("username", data.user.username);
       })
       .catch((error) => {
@@ -39,42 +39,38 @@ const Login = (props) => {
   return (
     <div className="wrapper">
       <div className="login-register">
-        <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              name="email"
-              required
-              value={email}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              onChange={(e) => setPassword(e.target.value)}
-              name="password"
-              value={password}
-              required
-              type={toggle === true ? "password" : "text"}
-            />
-            <i
-              className={
-                toggle === true
-                  ? "far fa-eye password-icon"
-                  : "far fa-eye-slash password-icon"
-              }
-              onClick={() => setToggle(!toggle)}
-            />
-          </FormGroup>
-          <Button id="auth-login" type="submit">
-            Login
-          </Button>
-        </Form>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            required
+            value={username}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={password}
+            required
+            type={toggle === true ? "password" : "text"}
+          />
+          <i
+            className={
+              toggle === true
+                ? "far fa-eye password-icon"
+                : "far fa-eye-slash password-icon"
+            }
+            onClick={() => setToggle(!toggle)}
+          />
+        </form>
+        <button id="auth-login" type="submit">
+          Login
+        </button>
         <p className="auth-toggle">
           Don't have an account?{" "}
-          <Link className="auth-toggle-link" to="/register" variant="body2">
+          <Link className="auth-toggle-link" to="/signup" variant="body2">
             Sign up
           </Link>
         </p>

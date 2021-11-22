@@ -1,19 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 import Login from "./Login";
-import Register from "./Register";
+import Signup from "./Signup";
 
 const Auth = (props) => {
   return (
     <div>
-      <Router>
-        <Route exact path="/">
-          <Login updateToken={props.updateToken} />
-        </Route>
-        <Route exact path="/register">
-          <Register updateToken={props.updateToken} />
-        </Route>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Login updateToken={props.updateToken} />} />
+        <Route path="/signup" element={<Signup token={props.updateToken} />} />
+      </Routes>
     </div>
   );
 };
