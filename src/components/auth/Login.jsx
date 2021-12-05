@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [toggle, setToggle] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3000/user/`, {
-      //1
       method: "POST",
       body: JSON.stringify({
         user: { username: username, password: password },
@@ -39,37 +36,36 @@ const Login = (props) => {
 
   return (
     <div>
-      <h3>Login</h3>
-      <div className="wrapper">
-        <div className="login-register">
+      <div className='wrapper'>
+        <div className='login-register'>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor='username'>Username</label>
             <input
-              type="username"
+              type='username'
               onChange={(e) => setUsername(e.target.value)}
-              name="username"
+              name='username'
               required
               value={username}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor='password'>Password</label>
             <input
-              type="password"
+              type='password'
               onChange={(e) => setPassword(e.target.value)}
-              name="password"
+              name='password'
               required
               value={password}
             />
-            <button id="auth-login" type="submit">
+            <button id='auth-login' type='submit'>
               Login
             </button>
-          </form>{" "}
-          <p className="auth-toggle">
+          </form>
+          <p className='auth-toggle'>
             Don't have an account?{" "}
-            <Link className="auth-toggle-link" to="/register" variant="body2">
+            <Link className='auth-toggle-link' to='/signup' variant='body2'>
               Sign up
             </Link>
           </p>
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
