@@ -41,13 +41,13 @@ function App() {
     <div>
       {/* <Auth token={sessionToken} updateToken={updateToken} /> */}
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           {protectedViews()}
         </Route>
-        <Route exact path="/home">
+        <Route exact path='/home'>
           <Homepage token={sessionToken} />
         </Route>
-        <Route exact path="/search">
+        <Route exact path='/search'>
           <SearchMovie />
         </Route>
         {/* <Route exact path="/profile">
