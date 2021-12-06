@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger;
     fetch(`http://localhost:3001/user/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -19,18 +22,17 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (!data.sessionToken) {
-          alert("Username or Password is incorrect. Please try again.");
-          return;
-        }
+        // if (!data.sessionToken) {
+        //   console.log(data.sessionToken);
+        //   return;
+        // }
+        history.push("/home");
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage", data.user.profileImage);
         localStorage.setItem("username", data.user.username);
       })
       .catch((error) => {
         console.log("Error", error);
-        alert("Something went wrong. Please try again.");
-        return;
       });
   };
 
@@ -58,14 +60,14 @@ const Login = (props) => {
             <button id='auth-login' type='submit'>
               Login
             </button>
-          </form>
+          </form>{" "}
           <p className='auth-toggle'>
             Don't have an account?{" "}
             <Link className='auth-toggle-link' to='/signup' variant='body2'>
               Sign up
             </Link>
           </p>
-        </div>
+        </div>{" "}
       </div>
     </div>
   );

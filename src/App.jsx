@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Auth from "./components/auth/Auth";
-// import Sitebar from "./components/sitebar/Sitebar";
+//import Navbar from "./components/navbar/Navbar.jsx"
 import Homepage from "./components/homepage/Homepage";
 import SearchMovie from "./components/searchMovie/SearchMovie";
 

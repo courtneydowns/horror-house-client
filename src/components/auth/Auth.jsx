@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./Login";
-import SignUp from "./SignUp";
+import Signup from "./Signup";
 
 const Auth = (props) => {
   return (
@@ -11,7 +11,7 @@ const Auth = (props) => {
           <Login updateToken={props.updateToken} />
         </Route>
         <Route exact path='/signup'>
-          <SignUp updateToken={props.updateToken} />
+          <Signup updateToken={props.updateToken} />
         </Route>
       </Router>
     </div>

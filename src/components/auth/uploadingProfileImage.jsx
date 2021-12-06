@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import PlaceholderImage from "../../assets/placeholder-profile-pic.png";
 
-const UploadingProfileImage = (props) => {
+const UploadingProfileImage = ({ setProfileImage }) => {
   const [image, setImage] = useState("");
-  const { setProfilePhoto } = props;
+  // const { setProfileImage } = props;
 
   const UploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "Jake-test");
+    data.append("upload_preset", "horror-house");
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/jgreene/image/upload",
+      "https://api.cloudinary.com/v1_1/courtneydowns/image/upload",
       {
         method: "POST",
         body: data,
@@ -20,7 +20,7 @@ const UploadingProfileImage = (props) => {
     const File = await res.json();
 
     setImage(File.secure_url);
-    setProfilePhoto(File.secure_url);
+    setProfileImage(File.secure_url);
   };
 
   return (
