@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import UploadingProfile from "./uploadingProfileImage";
+import UploadingProfileImage from "./UploadingProfileImage";
 
 const Signup = (props) => {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/user/signup`, {
+    fetch(`http://localhost:3001/user/signup`, {
       method: "POST",
       body: JSON.stringify({
         user: {
@@ -41,14 +41,14 @@ const Signup = (props) => {
   return (
     <div>
       <h1>Signup</h1>
-      <div className="wrapper">
-        <div className="login-register">
-          <p className="register-intro">
+      <div className='wrapper'>
+        <div className='login-register'>
+          <p className='register-intro'>
             Sign up to see photos from your friends and their pets.
           </p>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <UploadingProfile
+              <UploadingProfileImage
                 setProfilePhoto={setProfilePhoto}
                 profilePhoto={profilePhoto}
               />{" "}
@@ -56,18 +56,18 @@ const Signup = (props) => {
             <FormGroup>
               <Input
                 onChange={(e) => setUsername(e.target.value)}
-                name="username"
-                placeholder="Username"
+                name='username'
+                placeholder='Username'
                 value={username}
                 required
               />
             </FormGroup>
             <FormGroup>
               <Input
-                type="email"
+                type='email'
                 onChange={(e) => setEmail(e.target.value)}
-                name="email"
-                placeholder="Email"
+                name='email'
+                placeholder='Email'
                 value={email}
                 required
               />
@@ -75,19 +75,19 @@ const Signup = (props) => {
             <FormGroup>
               <Input
                 onChange={(e) => setPassword(e.target.value)}
-                name="password"
-                placeholder="Password"
+                name='password'
+                placeholder='Password'
                 value={password}
                 required
               />
             </FormGroup>
-            <Button id="auth-login" type="submit" style={{ marginTop: "5%" }}>
+            <Button id='auth-login' type='submit' style={{ marginTop: "5%" }}>
               Signup
             </Button>
           </Form>
-          <p className="auth-toggle">
+          <p className='auth-toggle'>
             Already have an account?{" "}
-            <Link className="auth-toggle-link" to="/" variant="body2">
+            <Link className='auth-toggle-link' to='/login' variant='body2'>
               Sign in here
             </Link>
           </p>

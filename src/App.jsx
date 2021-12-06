@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div>
-      {/* <Auth token={sessionToken} updateToken={updateToken} /> */}
+      <Auth token={sessionToken} updateToken={updateToken} />
       <Switch>
         <Route exact path='/'>
           {protectedViews()}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PlaceholderImage from "../../assets/placeholder-profile-pic.png";
 
-const UploadingProfile = (props) => {
+const UploadingProfileImage = (props) => {
   const [image, setImage] = useState("");
   const { setProfilePhoto } = props;
 
@@ -26,20 +26,20 @@ const UploadingProfile = (props) => {
   return (
     <div>
       <img
-        id="profile-pic"
+        id='profile-pic'
         src={image === "" ? PlaceholderImage : image}
-        alt=""
+        alt=''
       />
-      <form id="uploader">
-        <label htmlFor="profile-image-upload" className="custom-file-upload">
+      <form id='uploader'>
+        <label htmlFor='profile-image-upload' className='custom-file-upload'>
           <input
             style={{ width: 1, height: 1 }}
-            id="profile-image-upload"
-            type="file"
-            name="file"
-            placeholder="Upload Image Here"
+            id='profile-image-upload'
+            type='file'
+            name='file'
+            placeholder='Upload Image Here'
             onChange={UploadImage}
-            required="required"
+            required='required'
           />{" "}
           Add your Photo
         </label>
@@ -48,4 +48,4 @@ const UploadingProfile = (props) => {
   );
 };
 
-export default UploadingProfile;
+export default UploadingProfileImage;
