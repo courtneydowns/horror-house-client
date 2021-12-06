@@ -15,24 +15,22 @@ const MovieSearch = (props) => {
       })
       .catch((error) => {
         console.log("Error", error);
-        alert("Something went wrong. Please try again.");
-        return;
       });
   };
 
   return (
     <div>
       <input
-        placeholder="Search for Movie Here"
+        placeholder='Search for Movie Here'
         onInput={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleFetch}>Search</button>
       {movieSearchResults && (
         <div>
           <img
-            src={
-              "https://image.tmdb.org/t/p/w500/8NUM43rtQSt0chumXGJPvnYb01I.jpg/8NUM43rtQSt0chumXGJPvnYb01I.jpg"
-            }
+            // src={
+            // `https://image.tmdb.org/t/p/w500/8NUM43rtQSt0chumXGJPvnYb01I.jpg/8NUM43rtQSt0chumXGJPvnYb01I.jpg`
+            src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
             //base options with whatever width...https://image.tmdb.org/t/p/w500 ... fetch ... photoPath, setPhotoPath (null or "")(`https://image.tmdb.org/t/p/w500${data.poster_path}`)...json response
           />
           {/* <img src={movieSearchResults.Poster} alt="movie poster" /> */}
