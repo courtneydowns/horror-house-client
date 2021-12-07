@@ -1,24 +1,24 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from "./Login";
-import Signup from "./Signup";
+// import React from "react";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
+// import Login from "./Login";
+// import Signup from "./Signup";
 
-const Auth = (props) => {
-  return (
-    <div>
-      <Router>
-        <Route exact path='/'>
-          <Login updateToken={props.updateToken} />
-        </Route>
-        <Route exact path='/signup'>
-          <Signup updateToken={props.updateToken} />
-        </Route>
-      </Router>
-    </div>
-  );
-};
+// const Auth = (props) => {
+//   return (
+//     <div>
+//       <Router>
+//         <Route exact path='/'>
+//           <Login updateToken={props.updateToken} />
+//         </Route>
+//         <Route exact path='/signup'>
+//           <Signup updateToken={props.updateToken} />
+//         </Route>
+//       </Router>
+//     </div>
+//   );
+// };
 
-export default Auth;
+// export default Auth;
 // import CssBaseline from "@material-ui/core/CssBaseline";
 // import React, { useState } from "react";
 // import Grid from "@material-ui/core/Grid";

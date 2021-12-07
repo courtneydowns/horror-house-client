@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import UploadingProfileImage from "./UploadingProfileImage";
 
@@ -9,7 +9,7 @@ const Signup = (props) => {
   const [profileImage, setProfileImage] = useState("");
   const [username, setUsername] = useState("");
 
-  let history = useHistory();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,11 +87,14 @@ const Signup = (props) => {
             Signup
           </Button>
         </Form>
-        <p className='auth-toggle'>
-          Already have an account?{" "}
-          <Link className='auth-toggle-link' to='/' variant='body2'>
-            Sign in here
-          </Link>
+        <p
+          className='signin-login-toggle'
+          onClick={() => history.push("./Login.jsx")}
+        >
+          Already have an account? Sign in here.{" "}
+          {/* <Link className='auth-toggle-link' to='/signup' variant='body2'>
+              Sign up
+            </Link> */}
         </p>
       </div>
     </div>

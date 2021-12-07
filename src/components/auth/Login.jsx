@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  let history = useHistory();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,11 +60,14 @@ const Login = (props) => {
               Login
             </button>
           </form>{" "}
-          <p className='auth-toggle'>
-            Don't have an account?{" "}
-            <Link className='auth-toggle-link' to='/signup' variant='body2'>
+          <p
+            className='signin-login-toggle'
+            onClick={() => history.push("./Signup.jsx")}
+          >
+            Don't have an account? Sign up here.{" "}
+            {/* <Link className='auth-toggle-link' to='/signup' variant='body2'>
               Sign up
-            </Link>
+            </Link> */}
           </p>
         </div>{" "}
       </div>

@@ -1,7 +1,5 @@
-// import React from "react";
+import React from "react";
 
-// const Sitebar = () => {
-//   return <div></div>;
-// };
-
-// export default Sitebar;
+export default function Navbar() {
+  return <div></div>;
+}

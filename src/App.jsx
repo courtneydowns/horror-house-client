@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Auth from "./components/auth/Auth";
+import Navbar from "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
-import SearchMovie from "./components/searchMovie/SearchMovie";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -24,13 +25,13 @@ function App() {
     setSessionToken("");
   };
 
-  const protectedViews = () => {
-    return sessionToken === localStorage.getItem("token") ? (
-      <Homepage token={sessionToken} clearToken={clearToken} />
-    ) : (
-      <Auth token={sessionToken} updateToken={updateToken} />
-    );
-  };
+  // const protectedViews = () => {
+  //   return sessionToken === localStorage.getItem("token") ? (
+  //     <Homepage token={sessionToken} clearToken={clearToken} />
+  //   ) : (
+  //     <Auth token={sessionToken} updateToken={updateToken} />
+  //   );
+  // };
   // {!sessionToken && <Sitebar clickLogout={clearToken} />}
   {
     /* <Sitebar clickLogout={clearToken} /> */
@@ -39,15 +40,22 @@ function App() {
   return (
     <div>
       <Switch>
+        <Navbar token={sessionToken} />
         <Route exact path='/'>
-          {protectedViews()}
+          <Homepage />
         </Route>
+        <Route exact path='/login'>
+          <Login token={sessionToken} updateToken={updateToken} />
+        </Route>
+        <Route>
+          <Signup token={sessionToken} updateToken={updateToken} />
+        </Route>
+        {/* <Route exact path='/'>
+          {protectedViews()}
+        </Route> */}
         {/* <Route exact path='/home'>
           <Homepage token={sessionToken} />
         </Route> */}
-        <Route exact path='/search'>
-          <SearchMovie />
-        </Route>
         {/* <Route exact path="/profile">
                 <ViewProfile token={this.state.sessionToken} />
               </Route> */}
