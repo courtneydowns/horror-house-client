@@ -26,7 +26,6 @@ const Login = (props) => {
         //   console.log(data.sessionToken);
         //   return;
         // }
-        history.push("/home");
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage", data.user.profileImage);
         localStorage.setItem("username", data.user.username);

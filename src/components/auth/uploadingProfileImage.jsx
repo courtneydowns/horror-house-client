@@ -31,16 +31,17 @@ const UploadingProfileImage = ({ setProfileImage }) => {
         alt=''
       />
       <form id='uploader'>
+        <input
+          accept='image/*'
+          style={{ width: 1, height: 1 }}
+          id='profile-image-upload'
+          type='file'
+          name='file'
+          placeholder='Upload Image Here'
+          onChange={UploadImage}
+          required='required'
+        />{" "}
         <label htmlFor='profile-image-upload' className='custom-file-upload'>
-          <input
-            style={{ width: 1, height: 1 }}
-            id='profile-image-upload'
-            type='file'
-            name='file'
-            placeholder='Upload Image Here'
-            onChange={UploadImage}
-            required='required'
-          />{" "}
           Add your Photo
         </label>
       </form>

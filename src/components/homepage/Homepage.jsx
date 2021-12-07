@@ -1,7 +1,11 @@
 import React from "react";
+import Navbar from "../navbar/Navbar";
 
-const Homepage = () => {
-  return <div>Hello World</div>;
-};
-
-export default Homepage;
+export default function Homepage({ clearToken }) {
+  return (
+    <>
+      <h1>Hello World</h1>
+      <Navbar clickLogout={clearToken} />
+    </>
+  );
+}
