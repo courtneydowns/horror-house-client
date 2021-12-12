@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/navbar/Navbar";
+import "./css/style.css";
+import "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
+import Navbar from "./components/navbar/Navbar";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState("");

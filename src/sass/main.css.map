@@ -1,0 +1,24 @@
+{
+    "version": 3,
+    "mappings": "ACgBA;;;;;;;;;;;;;EAaE;AG7BF,AAAA,CAAC;AACD,CAAC,AAAA,OAAO;AACR,CAAC,AAAA,QAAQ,CAAC;EACR,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,OAAO;CACpB;;AAED,AAAA,IAAI,CAAC;EACH,SAAS,EAAE,KAAK;CACjB;;AAED,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAU;EACtB,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,WAAW,CAAC;EACV,gBAAgB,EFlBF,OAAO;EEmBrB,KAAK,EFPO,IAAI;CEQjB;;ACpBD,AAAA,IAAI,CAAC;EACH,WAAW,EAAE,0BAA0B;EACvC,WAAW,EAAE,GAAG;EAChB,WAAW,EAAE,GAAG;CACjB",
+    "sources": [
+        "main.scss",
+        "abstracts/_mixins.scss",
+        "abstracts/_variables.scss",
+        "base/_animations.scss",
+        "base/_base.scss",
+        "base/_typography.scss",
+        "base/_utilities.scss",
+        "components/_button.scss",
+        "components/_card.scss",
+        "layout/_header.scss",
+        "layout/_navigation.scss",
+        "pages/database.scss",
+        "pages/_home.scss",
+        "pages/_login.scss",
+        "pages/_search.scss",
+        "pages/_signup.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

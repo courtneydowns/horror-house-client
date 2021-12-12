@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 
-export default function Auth(props) {
+export default function Auth({ sessionToken, updateToken }) {
   const [loginShowing, setLoginShowing] = useState(true);
 
   const toggleView = () => setLoginShowing(!loginShowing);
@@ -11,14 +11,14 @@ export default function Auth(props) {
     <div>
       {loginShowing ? (
         <Login
-          token={props.sessionToken}
-          updateToken={props.updateToken}
+          token={sessionToken}
+          updateToken={updateToken}
           toggleView={toggleView}
         />
       ) : (
         <Signup
-          updateToken={props.updateToken}
-          token={props.sessionToken}
+          updateToken={updateToken}
+          token={sessionToken}
           //   toggleView={toggleView}
         />
       )}
