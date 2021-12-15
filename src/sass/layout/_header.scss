@@ -1,10 +1,11 @@
 .Signin__header {
   font-family: $font-header;
   letter-spacing: 0.25rem;
-  color: $color-grey-light-3;
+  color: $color-primary-light;
   text-align: center;
-  margin-top: 7rem;
-  font-size: 6rem;
+  margin-top: 4.5rem;
+  font-size: 5rem;
+  margin-right: 45rem;
 
   animation-name: moveInLeft;
   animation-duration: 1s;

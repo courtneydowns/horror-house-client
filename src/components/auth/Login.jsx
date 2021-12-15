@@ -34,37 +34,42 @@ export default function Login({ updateToken }) {
   };
 
   return (
-    <div className="signin">
-      <form className="signin__form" onSubmit={handleSubmit}>
-        <h3 className="signin__h3">Signin</h3>
-        <div className="signin__container">
-          <input
-            type="username"
-            onChange={handleUsername}
-            name="username"
-            placeholder="Username"
-            required
-            value={username}
-            className="signin__input"
-          />
-          <input
-            type="password"
-            onChange={handlePassword}
-            name="password"
-            placeholder="Password"
-            type="password"
-            required
-            value={password}
-            className="signin__input"
-          />
-          <button className="signin__button" type="submit">
-            Login
-          </button>
-        </div>
-      </form>{' '}
-      <p className="signin__toggle" onClick={() => history.push('./signup')}>
-        Don't have an account? Sign up here.{' '}
-      </p>
+    <div>
+      <header>
+        <h1 className="Signin__header">Welcome to Horror House</h1>
+      </header>
+      <div className="signin">
+        <form className="signin__form" onSubmit={handleSubmit}>
+          <h3 className="signin__h3">Signin</h3>
+          <div className="signin__container">
+            <input
+              type="username"
+              onChange={handleUsername}
+              name="username"
+              placeholder="Username"
+              required
+              value={username}
+              className="signin__input"
+            />
+            <input
+              type="password"
+              onChange={handlePassword}
+              name="password"
+              placeholder="Password"
+              type="password"
+              required
+              value={password}
+              className="signin__input"
+            />
+            <button className="signin__button" type="submit">
+              Login
+            </button>
+          </div>
+        </form>{' '}
+        <p className="signin__toggle" onClick={() => history.push('./signup')}>
+          Don't have an account? Sign up here.{' '}
+        </p>
+      </div>
     </div>
   );
 }
