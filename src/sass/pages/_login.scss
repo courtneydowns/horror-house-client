@@ -18,7 +18,7 @@ body {
   position: relative;
   margin-left: auto;
 
-  border-radius: 1rem;
+  border-radius: 3px;
   box-shadow: 0 4rem 5rem rgba($color-black, 0.4);
   text-align: center;
   padding: 0;
@@ -45,7 +45,7 @@ body {
     margin-left: auto;
     background: transparent;
     border: none;
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: "Didact Gothic", sans-serif;
     font-size: 1.5rem;
     color: $color-primary-light;
     cursor: pointer;
@@ -58,23 +58,23 @@ body {
   }
 }
 
-input[type='username'] {
+input[type="username"] {
   border: none;
   padding: 4px 8px;
   border-radius: 1rem;
 }
-input[type='username']:focus {
+input[type="username"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px $color-primary-light;
   border-radius: 1rem;
 }
 
-input[type='password'] {
+input[type="password"] {
   border: none;
   padding: 4px 8px;
   border-radius: 1rem;
 }
-input[type='password']:focus {
+input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px $color-primary-light;
   border-radius: 1rem;
