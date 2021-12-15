@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Login = (props) => {
+export default function Login({ updateToken, toggleView }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,100 +10,60 @@ const Login = (props) => {
 
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3001/user/login`, {
-      method: "POST",
-      body: JSON.stringify({
-        user: { username: username, password: password },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // if (!data.sessionToken) {
-        //   console.log(data.sessionToken);
-        //   return;
-        // }
-        props.updateToken(data.sessionToken);
-        localStorage.setItem("profileImage", data.user.profileImage);
-        localStorage.setItem("username", data.user.username);
-      })
-      .catch((err) => {
-        console.error(err);
+
+    try {
+      const fetchResults = await fetch(`http://localhost:3001/user/`, {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
       });
+      const json = await fetchResults.json();
+      if (!json.user || !json.sessionToken) {
+        alert(json.message);
+        return;
+      }
+      updateToken(json.sessionToken);
+      history.push("/home");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    // <div>
-    //   <div className='wrapper'>
-    //     <div className='login-register'>
-    //       <form onSubmit={handleSubmit}>
-    //         <label htmlFor='username'>Username</label>
-    //         <input
-    //           type='username'
-    //           onChange={(e) => setUsername(e.target.value)}
-    //           name='username'
-    //           required
-    //           value={username}
-    //         />
-    //         <label htmlFor='password'>Password</label>
-    //         <input
-    //           type='password'
-    //           onChange={(e) => setPassword(e.target.value)}
-    //           name='password'
-    //           required
-    //           value={password}
-    //         />
-    //         <button id='auth-login' type='submit'>
-    //           Login
-    //         </button>
-    //       </form>{" "}
-
-    <div className='login'>
-      <div form onSubmit={handleSubmit}>
-        <label className='login__label' htmlFor='username'>
-          Username
-        </label>
-        <input
-          className='login__input'
-          type='username'
-          onChange={handleUsername}
-          name='username'
-          value={username}
-        />
-        <div>
-          <label className='login__label' htmlFor='password'>
-            Password
-          </label>
+    <div>
+      <div className='signin'>
+        <form onSubmit={handleSubmit}>
           <input
-            className='login__input'
+            type='username'
+            onChange={handleUsername}
+            name='username'
+            placeholder='Username'
+            required
+            value={username}
+            className='signin__input'
+          />
+          <input
             type='password'
             onChange={handlePassword}
             name='password'
+            placeholder='Password'
+            type='password'
+            required
             value={password}
+            className='signin__input'
           />
           <button className='login__button' type='submit'>
             Login
           </button>
-        </div>
-        {/* <p className='toggle'>
-            <Link onClick={toggleView}>
-              {"Don't have an account? Sign up here!"}
-            </Link>
-          </p> */}
-        <p className='toggle' onClick={() => history.push("./signup")}>
+        </form>{" "}
+        <p className='signin__toggle' onClick={() => history.push("./signup")}>
           Don't have an account? Sign up here.{" "}
         </p>
-        {/* <Link className='auth-toggle-link' to='/signup' variant='body2'>
-              Sign up
-            </Link> */}
-      </div>{" "}
+      </div>
     </div>
   );
-};
-
-export default Login;
+}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import PlaceholderImage from "../../assets/placeholder-profile-pic.png";
+import PlaceholderImage from "../../assets/user.png";
 
-const UploadingProfileImage = ({ setProfileImage }) => {
+const UploadingProfileImage = (props) => {
   const [image, setImage] = useState("");
-  // const { setProfileImage } = props;
+  const { setProfileImage } = props;
 
   const UploadImage = async (e) => {
     const files = e.target.files;
@@ -20,7 +20,7 @@ const UploadingProfileImage = ({ setProfileImage }) => {
     const File = await res.json();
 
     setImage(File.secure_url);
-    setProfileImage(File.secure_url);
+    // setProfileImage(File.secure_url);
   };
 
   return (

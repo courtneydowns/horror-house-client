@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/navbar/Navbar";
+import "./css/style.css";
+import "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
 import Login from "./components/auth/Login";
+import Login2 from "./components/auth/Login2";
 import Signup from "./components/auth/Signup";
+import Navbar from "./components/navbar/Navbar";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -42,7 +44,7 @@ export default function App() {
       <main>
         <Switch>
           <Route exact path='/'>
-            <Login token={sessionToken} updateToken={updateToken} />
+            <Login2 token={sessionToken} updateToken={updateToken} />
           </Route>
           <Route exact path='/signup'>
             <Signup token={sessionToken} updateToken={updateToken} />
