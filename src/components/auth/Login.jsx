@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function Login({ updateToken, toggleView }) {
+export default function Login({ updateToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,8 +35,12 @@ export default function Login({ updateToken, toggleView }) {
 
   return (
     <div>
+      {/* <header>
+        <h1 className='Signin__header'>Welcome to Horror House</h1>
+      </header> */}
       <div className='signin'>
-        <form onSubmit={handleSubmit}>
+        <form className='signin__form' onSubmit={handleSubmit}>
+          <h3 className='signin__h3'>Signin</h3>
           <input
             type='username'
             onChange={handleUsername}
@@ -56,7 +60,7 @@ export default function Login({ updateToken, toggleView }) {
             value={password}
             className='signin__input'
           />
-          <button className='login__button' type='submit'>
+          <button className='signin__button' type='submit'>
             Login
           </button>
         </form>{" "}

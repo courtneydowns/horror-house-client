@@ -1,1 +1,81 @@
+body {
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary,
+    $color-primary-dark
+  );
+  height: 100vh;
+}
 
+.signin {
+  background-color: $color-secondary-dark;
+  width: 35vw;
+  height: 100vh;
+  display: block;
+  position: relative;
+  margin-left: auto;
+
+  border-radius: 1rem;
+  box-shadow: 0 4rem 5rem rgba($color-black, 0.4);
+  text-align: center;
+  padding: 0;
+
+  &__h3 {
+    font-size: 4rem;
+    margin-top: 0.5rem;
+    text-align: inherit;
+    box-shadow: inherit;
+    position: absolute;
+    display: inherit;
+  }
+
+  &__input {
+    height: 3rem;
+    width: 30rem;
+    box-shadow: inherit;
+  }
+
+  &__btn {
+    display: inherit;
+    position: absolute;
+    margin: inherit;
+    box-shadow: inherit;
+  }
+
+  &__toggle {
+    font-size: 1.6rem;
+    margin-top: 6rem;
+    cursor: pointer;
+  }
+
+  &__button {
+    background: transparent;
+    border: none;
+    font-family: "Didact Gothic", sans-serif;
+    font-size: 1.5rem;
+    color: $color-primary-light;
+    cursor: pointer;
+  }
+}
+
+input[type="username"] {
+  border: none;
+  padding: 4px 8px;
+  border-radius: 1rem;
+}
+input[type="username"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px $color-primary-light;
+  border-radius: 1rem;
+}
+
+input[type="password"] {
+  border: none;
+  padding: 4px 8px;
+  border-radius: 1rem;
+}
+input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px $color-primary-light;
+  border-radius: 1rem;
+}

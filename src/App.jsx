@@ -4,9 +4,10 @@ import "./css/style.css";
 import "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
 import Login from "./components/auth/Login";
-import Login2 from "./components/auth/Login2";
 import Signup from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
+
+import "./sass/main.scss";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -44,7 +45,7 @@ export default function App() {
       <main>
         <Switch>
           <Route exact path='/'>
-            <Login2 token={sessionToken} updateToken={updateToken} />
+            <Login token={sessionToken} updateToken={updateToken} />
           </Route>
           <Route exact path='/signup'>
             <Signup token={sessionToken} updateToken={updateToken} />
