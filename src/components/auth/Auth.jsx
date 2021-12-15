@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Login from "./Login";
+import Login2 from "./Login2";
 import Signup from "./Signup";
 
 export default function Auth({ sessionToken, updateToken }) {
@@ -10,7 +10,7 @@ export default function Auth({ sessionToken, updateToken }) {
   return (
     <div>
       {loginShowing ? (
-        <Login
+        <Login2
           token={sessionToken}
           updateToken={updateToken}
           toggleView={toggleView}
@@ -19,7 +19,7 @@ export default function Auth({ sessionToken, updateToken }) {
         <Signup
           updateToken={updateToken}
           token={sessionToken}
-          //   toggleView={toggleView}
+          toggleView={toggleView}
         />
       )}
     </div>

@@ -20,7 +20,7 @@ const UploadingProfileImage = (props) => {
     const File = await res.json();
 
     setImage(File.secure_url);
-    setProfileImage(File.secure_url);
+    // setProfileImage(File.secure_url);
   };
 
   return (
