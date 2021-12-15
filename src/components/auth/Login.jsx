@@ -35,9 +35,9 @@ export default function Login({ updateToken }) {
 
   return (
     <div>
-      {/* <header>
+      <header>
         <h1 className='Signin__header'>Welcome to Horror House</h1>
-      </header> */}
+      </header>
       <div className='signin'>
         <form className='signin__form' onSubmit={handleSubmit}>
           <h3 className='signin__h3'>Signin</h3>

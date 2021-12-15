@@ -1,15 +1,18 @@
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    $color-primary,
-    $color-primary-dark
-  );
+  //   background-image: linear-gradient(
+  //     to right bottom,
+  //     $color-primary,
+  //     $color-primary-dark
+  //   );
+  background-image: url("../../assets/house.jpg");
+  background-size: cover;
+  margin-left: 20rem;
   height: 100vh;
 }
 
 .signin {
   background-color: $color-secondary-dark;
-  width: 35vw;
+  width: 30vw;
   height: 100vh;
   display: block;
   position: relative;
