@@ -13,3 +13,15 @@
     transform: translate(0);
   }
 }
+
+@keyframes focusInExpand {
+  from {
+    filter: blur(1rem);
+    transform: scaleX(0);
+  }
+
+  to {
+    filter: blur(0);
+    transform: scaleX(1);
+  }
+}
