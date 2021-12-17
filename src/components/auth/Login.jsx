@@ -72,153 +72,84 @@ export default function Login({ updateToken }) {
           <h1 className='signin__header'>Welcome back to Horror House!</h1>
         </header>
       </Grid>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Box
-          sx={{
-            my: 8,
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "#cc0000" }}>
-            <FaGhost style={{ fontSize: "3rem" }} />
-          </Avatar>
-          <Typography component='h1' variant='h5'>
-            Sign in
-          </Typography>
-          <Box
-            component='form'
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              id='username'
-              label='Username'
-              name='username'
-              autoComplete='username'
-              autoFocus
-              validate
-              onChange={handleUsername}
-            />
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-              validate
-              autoComplete='current-password'
-              onChange={handlePassword}
-            />
-            {/* <FormControlLabel
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+      ></Grid>
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "#cc0000" }}>
+          <FaGhost style={{ fontSize: "3rem" }} />
+        </Avatar>
+        <Typography component='h1' variant='h5'>
+          Sign in
+        </Typography>
+        <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            id='username'
+            label='Username'
+            name='username'
+            autoComplete='username'
+            autoFocus
+            validate
+            onChange={handleUsername}
+          />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='password'
+            label='Password'
+            type='password'
+            id='password'
+            validate
+            autoComplete='current-password'
+            onChange={handlePassword}
+          />
+          {/* <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
               label='Remember me'
             /> */}
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              {/* <Grid item xs>
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            {/* <Grid item xs>
                 <Link href='#' variant='body2'>
                   Forgot password?
                 </Link>
               </Grid> */}
-              {/* <Grid item> */}
-              <p
-                style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                className='signup__toggle'
-                onClick={() => history.push("./signup")}
-              >
-                Already have an account? Sign up here.{" "}
-              </p>
-              {/* </Grid> */}
-            </Grid>
-          </Box>
+            {/* <Grid item> */}
+            <p
+              style={{ fontSize: "1.5rem", cursor: "pointer" }}
+              className='signup__toggle'
+              onClick={() => history.push("./signup")}
+            >
+              Already have an account? Sign up here.{" "}
+            </p>
+            {/* </Grid> */}
+          </Grid>
         </Box>
-      </Grid>
+      </Box>
     </Grid>
   );
 }
-// import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-
-// export default function Login({ updateToken }) {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const handleUsername = (e) => setUsername(e.target.value);
-//   const handlePassword = (e) => setPassword(e.target.value);
-
-//   const history = useHistory();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const fetchResults = await fetch(`http://localhost:3001/user/`, {
-//         method: "POST",
-//         body: JSON.stringify({ username, password }),
-//         headers: new Headers({
-//           "Content-Type": "application/json",
-//         }),
-//       });
-//       const json = await fetchResults.json();
-//       if (!json.user || !json.sessionToken) {
-//         alert(json.message);
-//         return;
-//       }
-//       updateToken(json.sessionToken);
-//       history.push("/home");
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   return (
-//     // <div className='signin'>
-//     //   <form className='signin__form' onSubmit={handleSubmit}>
-//     //     <h3 className='signin__h3'>Signin</h3>
-//     //     <div className='signin__container'>
-//     //       <input
-//     //         type='username'
-//     //         onChange={handleUsername}
-//     //         name='username'
-//     //         placeholder='Username'
-//     //         required
-//     //         value={username}
-//     //         className='signin__input'
-//     //       />
-//     //       <input
-//     //         type='password'
-//     //         onChange={handlePassword}
-//     //         name='password'
-//     //         placeholder='Password'
-//     //         type='password'
-//     //         required
-//     //         value={password}
-//     //         className='signin__input'
-//     //       />
-//     //       <button className='signin__button' type='submit'>
-//     //         Login
-//     //       </button>
-//     //     </div>
-//     //   </form>{" "}
-//     //   <p className='signin__toggle' onClick={() => history.push("./signup")}>
-//     //     Don't have an account? Sign up here.{" "}
-//     //   </p>
-//     // </div>
-//   );
-// }
