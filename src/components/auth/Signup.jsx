@@ -1,195 +1,51 @@
-// import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-// import UploadingProfileImage from "./UploadingProfileImage";
-
-// const Signup = (props) => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [profileImage, setProfileImage] = useState("");
-//   const [username, setUsername] = useState("");
-
-//   let history = useHistory();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     fetch(`http://localhost:3001/user/signup`, {
-//       //1
-//       method: "POST",
-//       body: JSON.stringify({
-//         user: {
-//           username: username,
-//           profileImage: profileImage,
-//           email: email,
-//           password: password,
-//         },
-//       }),
-//       headers: new Headers({
-//         "Content-Type": "application/json",
-//       }),
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         history.push("/home");
-//         props.updateToken(data.sessionToken);
-//         localStorage.setItem("profileImage", profileImage);
-//         localStorage.setItem("userName", username);
-//       })
-//       .catch((error) => {
-//         console.log("Error", error);
-//         alert("Something went wrong. Please try again.");
-//         return;
-//       });
-//   };
-
-//   return (
-//     <div className='signup'>
-//       <p className='signup__header'>Sign up to search and scream!</p>
-//       <form onSubmit={handleSubmit}>
-//         <UploadingProfileImage
-//           setProfileImage={setProfileImage}
-//           profileImage={profileImage}
-//           className='signup__photo'
-//         />
-//         <input
-//           onChange={(e) => setUsername(e.target.value)}
-//           name='username'
-//           placeholder='Username'
-//           value={username}
-//           required
-//           className='signup__input'
-//         />
-//         <input
-//           type='email'
-//           onChange={(e) => setEmail(e.target.value)}
-//           name='email'
-//           placeholder='Email'
-//           value={email}
-//           required
-//           className='signup__input'
-//         />
-//         <input
-//           onChange={(e) => setPassword(e.target.value)}
-//           name='password'
-//           placeholder='Password'
-//           value={password}
-//           required
-//           type='password'
-//           className='signup__input'
-//         />
-//         <button className='signup__button' type='submit'>
-//           Signup
-//         </button>
-//       </form>
-//       <p className='signup__toggle' onClick={() => history.push("./signin")}>
-//         Don't have an account? Sign up here.{" "}
-//       </p>
-//     </div>
-//   );
-// };
-
-// export default Signup;
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { FaGhost } from "react-icons/fa";
+import house from "../../assets/house.jpg";
+import "../../sass/main.scss";
 
-const Signup = (props) => {
-  const { updateToken } = props;
-  const [name, setName] = useState("");
-  // const [profileImage, setProfileImage] = useState("");
+export default function Login({ updateToken }) {
   const [username, setUsername] = useState("");
-  const [password1, setPassword1] = useState("");
+  const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [passwordsMatch, setPasswordsMatch] = useState(null);
-  const [usernameAvailable, setUsernameAvailable] = useState(null);
-
-  let history = useHistory();
-
-  const handleName = (e) => setName(e.target.value);
+  const handleFullName = (e) => setFullName(e.taget.value);
   const handleUsername = (e) => setUsername(e.target.value);
-  const handlePassword1 = (e) => setPassword1(e.target.value);
-  const handlePassword2 = (e) => {
-    setPassword2(e.target.value);
-  };
-  // const handleProfileImage = (e) => setProfileImage(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
-  const handleUsernameAvailable = () => {
-    const userAvailFetch = async () => {
-      try {
-        if (validateUsername(username)) {
-          const usernameResults = await fetch(
-            `http://localhost:3001/user/checkAvail/${username}`
-          );
-          const usernameJson = await usernameResults.json();
-          setUsernameAvailable(usernameJson);
-        } else if (username.length < 6) {
-          setUsernameAvailable(null);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    userAvailFetch();
-  };
+  const handlePassword1 = (e) => setPassword(e.target.value);
+  const handlePassword2 = (e) => setPassword2(e.target.valuse);
 
-  const validateName = (fullName) => fullName.split(" ").length >= 2;
-  const validateUsername = (username) => username.length >= 6;
-  const validateEmail = (emailAddress) =>
-    emailAddress.split("").includes("@") && emailAddress.length >= 6;
-  const validatePasswordsMatch = (p1, p2) => p1 === p2;
-  const validatePasswordLength = (p1) => p1.length >= 8;
-
-  useEffect(() => {
-    setPasswordsMatch(validatePasswordsMatch(password1, password2));
-  }, [password1, password2]);
-
-  useEffect(handleUsernameAvailable, [username]);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateName(name)) {
-      alert("Please fill out your full name.");
-      return;
-    }
-    if (!validateUsername(username)) {
-      alert("Username must be at least 6 characters long.");
-      return;
-    }
-    if (!usernameAvailable) {
-      alert("That username is already taken.");
-    }
-    if (!validateEmail(email)) {
-      alert("Please use a valid email address.");
-      return;
-    }
-    if (!passwordsMatch) {
-      alert("Passwords must match.");
-      return;
-    }
-    if (!validatePasswordLength(password1)) {
-      alert("Password must be at least 8 characters long.");
-      return;
-    }
 
     try {
       const fetchResults = await fetch(`http://localhost:3001/user/signup`, {
         method: "POST",
-        body: JSON.stringify({
-          username,
-          // profileImage,
-          name: name
-            .split(" ")
-            .map((name) => name[0].toUpperCase() + name.slice(1))
-            .join(" "),
-          password: password1,
-          email,
-        }),
+        body: JSON.stringify({ username, password }),
         headers: new Headers({
           "Content-Type": "application/json",
         }),
       });
       const json = await fetchResults.json();
-      // console.log("json response", json);
+      if (!json.user || !json.sessionToken) {
+        alert(json.message);
+        return;
+      }
       updateToken(json.sessionToken);
       history.push("/home");
     } catch (err) {
@@ -198,76 +54,148 @@ const Signup = (props) => {
   };
 
   return (
-    <div className='signup'>
-      <form onSubmit={handleSubmit} className='signup__form'>
-        {/* <UploadingProfileImage required /> */}
-        <input
-          placeholder='Full Name'
-          name='full-name'
-          required
-          value={name}
-          onChange={handleName}
-          className='signup__input'
-        />
-        <input
-          name='username'
-          value={username}
-          onChange={handleUsername}
-          placeholder='Username'
-          required
-          className='signup__input'
-        />
-        <p
-          style={{
-            color: usernameAvailable ? "green" : "red",
-          }}
-        >
-          {usernameAvailable === true
-            ? "Username available!"
-            : usernameAvailable === false
-            ? "That username is already taken"
-            : null}
-        </p>
-        <input
-          name='email'
-          placeholder='Email'
-          value={email}
-          onChange={handleEmail}
-          required
-          className='signup__input'
-        />
-        <input
-          required
-          type='password'
-          placeholder='password'
-          value={password1}
-          onChange={handlePassword1}
-          className='signup__input'
-        />
-        <input
-          color={!passwordsMatch ? "red" : null}
-          required
-          label={
-            password2
-              ? passwordsMatch
-                ? "Passwords match ✔"
-                : "Passwords must match"
-              : "Re-enter password"
-          }
-          type='password'
-          placeholder='Confirm Password'
-          autoComplete='current-password'
-          value={password2}
-          onChange={handlePassword2}
-          className='signup__input'
-        />
-        <button type='submit'>Sign up</button>
-      </form>
-      <p className='signup__toggle' onClick={() => history.push("./")}>
-        Already have an account? Sign in here.{" "}
-      </p>
-    </div>
+    <Grid container component='main' sx={{ height: "100vh" }}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        sx={{
+          backgroundImage: `url(${house})`,
+          backgroundRepeat: "no-repeat",
+          backgroundColor: (t) =>
+            t.palette.mode === "light"
+              ? t.palette.grey[50]
+              : t.palette.grey[900],
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {" "}
+        <header>
+          <h1 className='signin__header'>Welcome to Horror House!</h1>
+        </header>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+      ></Grid>
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "#cc0000" }}>
+          <FaGhost style={{ fontSize: "3rem" }} />
+        </Avatar>
+        <Typography component='h1' variant='h5'>
+          Sign in
+        </Typography>
+        <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            id='full-name'
+            label='Full Name'
+            name='full-name'
+            autoComplete='full-name'
+            autoFocus
+            validate
+            value={fullName}
+            onChange={handleFullName}
+          />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='username'
+            label='Username'
+            type='username'
+            id='password'
+            validate
+            autoComplete='username'
+            value={username}
+            onChange={handleUsername}
+          />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='email'
+            label='Email'
+            type='email'
+            id='email'
+            validate
+            autoComplete='email'
+            value={email}
+            onChange={handleEmail}
+          />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='password'
+            label='Password'
+            type='password'
+            id='password'
+            validate
+            autoComplete='current-password'
+            value={"password"}
+            onChange={handlePassword1}
+          />
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            name='password'
+            label='Confirm Password'
+            type='password'
+            id='password'
+            validate
+            autoComplete='current-password'
+            value={password2}
+            onChange={handlePassword2}
+          />
+          {/* <FormControlLabel
+              control={<Checkbox value='remember' color='primary' />}
+              label='Remember me'
+            /> */}
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            {/* <Grid item xs>
+                <Link href='#' variant='body2'>
+                  Forgot password?
+                </Link>
+              </Grid> */}
+            {/* <Grid item> */}
+            <p
+              style={{ fontSize: "1.5rem", cursor: "pointer" }}
+              className='signup__toggle'
+              onClick={() => history.push("./")}
+            >
+              Already have an account? Sign up here.{" "}
+            </p>
+            {/* </Grid> */}
+          </Grid>
+        </Box>
+      </Box>
+    </Grid>
   );
-};
-
-export default Signup;
+}

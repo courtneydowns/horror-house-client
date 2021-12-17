@@ -33,12 +33,6 @@ body {
     width: 30rem;
   }
 
-  &__input {
-    margin-top: 1rem;
-    width: 100%;
-    height: 3rem;
-  }
-
   &__button {
     display: block;
     margin-top: 1rem;
@@ -51,30 +45,14 @@ body {
     cursor: pointer;
   }
 
-  &__toggle {
-    font-size: 1.6rem;
+  .signup__toggle {
+    font-size: 4rem;
     margin-top: 6rem;
     cursor: pointer;
   }
 }
 
-input[type="username"] {
-  border: none;
-  padding: 4px 8px;
-  border-radius: 1rem;
-}
 input[type="username"]:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px $color-primary-light;
-  border-radius: 1rem;
-}
-
-input[type="password"] {
-  border: none;
-  padding: 4px 8px;
-  border-radius: 1rem;
-}
-input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px $color-primary-light;
   border-radius: 1rem;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import theme from "./theme";
+import { ThemeProvider } from "@mui/material/styles";
 import "./css/style.css";
 import "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
@@ -7,7 +9,7 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
 
-import "./sass/main.scss";
+// import "./sass/main.scss";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -41,31 +43,30 @@ export default function App() {
   }
 
   return (
-    <div>
-      <header>
-        <h1 className='signin__header'>Welcome to Horror House</h1>
-      </header>
-      <main>
-        <Switch>
-          <Route exact path='/'>
-            <Login token={sessionToken} updateToken={updateToken} />
-          </Route>
-          <Route exact path='/signup'>
-            <Signup token={sessionToken} updateToken={updateToken} />
-          </Route>
+    <ThemeProvider theme={theme}>
+      <div>
+        <main>
+          <Switch>
+            <Route exact path='/'>
+              <Login token={sessionToken} updateToken={updateToken} />
+            </Route>
+            <Route exact path='/signup'>
+              <Signup token={sessionToken} updateToken={updateToken} />
+            </Route>
 
-          {sessionToken === localStorage.getItem("token") && (
-            <>
-              <Route exact path='/home'>
-                <Homepage token={sessionToken} />
-              </Route>
-              <header>
-                <Navbar clearToken={clearToken} />
-              </header>
-            </>
-          )}
-        </Switch>
-      </main>
-    </div>
+            {sessionToken === localStorage.getItem("token") && (
+              <>
+                <Route exact path='/home'>
+                  <Homepage token={sessionToken} />
+                </Route>
+                <header>
+                  <Navbar clearToken={clearToken} />
+                </header>
+              </>
+            )}
+          </Switch>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
