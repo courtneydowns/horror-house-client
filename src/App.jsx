@@ -9,7 +9,7 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
 
-// import "./sass/main.scss";
+import "./sass/main.scss";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState("");

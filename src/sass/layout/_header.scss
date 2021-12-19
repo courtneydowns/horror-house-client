@@ -12,3 +12,18 @@
   animation-duration: 1s;
   animation-timing-function: ease-out;
 }
+
+.signup__header {
+  position: absolute;
+  font-family: $font-header;
+  letter-spacing: 0.25rem;
+  color: $color-primary-light;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 5rem;
+  margin-left: 10rem;
+
+  animation-name: focusInExpand;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}

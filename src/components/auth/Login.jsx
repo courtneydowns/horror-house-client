@@ -138,7 +138,7 @@ export default function Login({ updateToken, toggleView }) {
                   <p
                     style={{ fontSize: "1.5rem", cursor: "pointer" }}
                     className='signup__toggle'
-                    onClick={() => history.push("./")}
+                    onClick={() => history.push("./signup")}
                   >
                     Already have an account? Sign up here.{" "}
                   </p>
