@@ -8,6 +8,7 @@ import Homepage from "./components/homepage/Homepage";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
+import SearchResult from "./components/SearchMovie/SearchResult";
 
 import "./sass/main.scss";
 
@@ -58,6 +59,9 @@ export default function App() {
               <>
                 <Route exact path='/home'>
                   <Homepage token={sessionToken} />
+                </Route>
+                <Route exact path='/search'>
+                  <SearchResult token={sessionToken} />
                 </Route>
                 <header>
                   <Navbar clearToken={clearToken} />

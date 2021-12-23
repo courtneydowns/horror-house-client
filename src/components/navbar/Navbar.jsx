@@ -11,9 +11,8 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import HorrorHouseLogo from "../../assets/Horror House.svg";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Search", "Database"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -36,17 +35,16 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position='static'>
+    <AppBar position='static' xs={{height: "1rem"}}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Typography
+          {/* <Typography
             variant='h6'
             noWrap
             component='div'
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
-            <img src={HorrorHouseLogo} />
-          </Typography>
+            sx={{ mr: 2, display: "flex", fontFamily: "myFont, sans-serif", fontSize: "2.5rem", color: "red" } }
+          > Horror House
+          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -88,9 +86,8 @@ const ResponsiveAppBar = () => {
             variant='h6'
             noWrap
             component='div'
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            LOGO
+            sx={{ mr: 2, display: "flex", fontFamily: "myFont, sans-serif", fontSize: "2.5rem", color: "red" } }
+          > Horror House
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
