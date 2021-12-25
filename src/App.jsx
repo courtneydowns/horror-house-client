@@ -9,6 +9,7 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
 import SearchResult from "./components/SearchMovie/SearchResult";
+import MovieDatabase from "./components/moviedatabase/MovieDatabase";
 
 import "./sass/main.scss";
 
@@ -45,32 +46,35 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <main>
-          <Switch>
-            <Route exact path='/'>
-              <Login token={sessionToken} updateToken={updateToken} />
-            </Route>
-            <Route exact path='/signup'>
-              <Signup token={sessionToken} updateToken={updateToken} />
-            </Route>
+    <div>
+      <main>
+        <Switch>
+          <Route exact path='/'>
+            <Login token={sessionToken} updateToken={updateToken} />
+          </Route>
+          <Route exact path='/signup'>
+            <Signup token={sessionToken} updateToken={updateToken} />
+          </Route>
 
-            {sessionToken === localStorage.getItem("token") && (
-              <>
-                <Route exact path='/home'>
-                  <Homepage token={sessionToken} />
-                </Route>
-                <Route exact path='/search'>
-                  <SearchResult token={sessionToken} />
-                </Route>
-                <header>
-                  <Navbar clearToken={clearToken} />
-                </header>
-              </>
-            )}
-          </Switch>
-        </main>
-      </div>
-    </ThemeProvider>
-  );
+          {sessionToken === localStorage.getItem("token") && (
+            <>
+              <Route exact path='/home'>
+                <Homepage token={sessionToken} />
+              </Route>
+              <Route exact path='/search'>
+                <SearchResult token={sessionToken} />
+              </Route>
+              <Route exact path='/database'>
+                <MovieDatabase token={sessionToken} />
+              </Route>
+              <header>
+                <Navbar clearToken={clearToken} />
+              </header>
+            </>
+          )}
+        </Switch>
+      </main>
+    </div>
+  </ThemeProvider>
+);
 }

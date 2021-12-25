@@ -11,7 +11,7 @@ export default function SearchResult() {
 
   async function searchMovies(searchQuery) {
     const resp = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=f6c2597101b3b0f8d6fcff87b23eaea3&&with_genres=27`
+      `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=f6c2597101b3b0f8d6fcff87b23eaea3&with_genres===27`
     );
     const json = await resp.json();
     const { results } = json;
