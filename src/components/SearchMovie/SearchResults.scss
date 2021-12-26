@@ -1,0 +1,39 @@
+.search-results {
+  $maxWidth: 33vw;
+
+  &__header {
+    color: black;
+    font-size: 32px;
+    text-shadow: 0 1px 8px rgba(255, 0, 0, 0.75);
+  }
+
+  &__ui-container {
+    margin: auto;
+    margin-bottom: 32px;
+    max-width: $maxWidth;
+    text-align: center;
+  }
+
+  .search-result {
+    margin: auto;
+    margin-bottom: 16px;
+    padding: 8px;
+    max-width: $maxWidth;
+    background: linear-gradient(
+      to right bottom,
+      white,
+      rgba(255, 255, 255, 0.75),
+      white
+    );
+    color: black;
+    border-radius: 4px;
+
+    &__title {
+      font-size: 22px;
+    }
+
+    img {
+      width: 33%;
+    }
+  }
+}
