@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import './SearchResults.scss';
 
@@ -7,7 +7,9 @@ export default function SearchResult() {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState('');
 
-  searchInput.current?.focus();
+  useEffect(() => {
+    searchInput.current?.focus();
+  }, []);
 
   async function searchMovies(searchQuery) {
     const resp = await fetch(

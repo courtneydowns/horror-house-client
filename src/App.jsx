@@ -49,7 +49,7 @@ export default function App() {
       <div>
         <main>
           <Switch>
-            <Route exact path="/">
+            {/* <Route exact path="/">
               <Login token={sessionToken} updateToken={updateToken} />
             </Route>
             <Route exact path="/signup">
@@ -71,7 +71,22 @@ export default function App() {
                   <MovieDatabase token={sessionToken} />
                 </Route>
               </>
-            )}
+            )} */}
+
+            <>
+              <header>
+                <Navbar clearToken={clearToken} />
+              </header>
+              <Route exact path="/home">
+                <Homepage token={sessionToken} />
+              </Route>
+              <Route exact path="/search">
+                <SearchResults token={sessionToken} />
+              </Route>
+              <Route exact path="/database">
+                <MovieDatabase token={sessionToken} />
+              </Route>
+            </>
           </Switch>
         </main>
       </div>
