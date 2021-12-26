@@ -23,7 +23,7 @@ export default function SearchResult() {
 
   return (
     <div className="search-result">
-      <h2 className="search-result__header">Search for Movie by Title</h2>
+      <h2 className="search-result__header">Search Your Scream</h2>
 
       <input
         ref={searchInput}
