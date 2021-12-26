@@ -18,7 +18,9 @@ export default function SearchResult() {
     const json = await resp.json();
     let { results } = json;
 
-    results = results.filter((result) => result.genre_ids.includes(27));
+    results = results
+      .filter((result) => result.genre_ids.includes(27))
+      .map((result) => new Date(result.release_date).toLocaleDateString());
 
     setSearchResults(results || []);
 
