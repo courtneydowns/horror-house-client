@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './MovieDatabase.scss';
+// import './MovieDatabase.scss';
 
 export default function LoadDatabase() {
   const [databaseResults, setDatabaseResults] = useState([]);
@@ -16,28 +16,32 @@ export default function LoadDatabase() {
   }, []);
 
   return (
-    <div className="database-results">
+    <div className="database">
+    <div className="card">
+      <div className="card__side card__side--front">
       {!!databaseResults.length &&
         databaseResults.map((databaseResult) => (
-          <div className="database-result" key={databaseResult.id}>
+          <div key={databaseResult.id}>
             <img
               src={`https://image.tmdb.org/t/p/original${databaseResult.poster_path}`}
               alt="Movie poster"
-            />
-            <h1 className="database-result__title">
-              Title: {databaseResult.title}
+            className="card__picture"/>
+            <div className="card__side card__side--back"></div>
+            <h1 className="card__title"> {databaseResult.title}
             </h1>
-            <h3 className="database-result__details">
-              IMDB Rating {databaseResult.vote_average}
+            <h3 className="card__details">
+              <strong>IMDB Rating: </strong>{databaseResult.vote_average}
             </h3>
-            <h3 className="database-result__details">
-              Release Date: {databaseResult.release_date}
+            <h3 className="card__details">
+              <strong>Release Date: </strong>{databaseResult.release_date}
             </h3>
-            <h3 className="database-result__details">
-              Overview: {databaseResult.overview}
+            <h3 className="card__details">
+              <strong>Overview: </strong> {databaseResult.overview}
             </h3>
           </div>
         ))}
-    </div>
+</div>
+</div>
+</div>
   );
 }

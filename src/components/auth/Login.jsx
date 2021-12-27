@@ -61,6 +61,9 @@ export default function Login({ updateToken, toggleView }) {
           md={7}
           sx={{
             backgroundImage: `url(${house})`,
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            height: "100vh",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"

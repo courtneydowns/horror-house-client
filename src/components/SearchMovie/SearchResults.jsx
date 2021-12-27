@@ -31,32 +31,36 @@ export default function SearchResult() {
   }
 
   return (
-    <div className="search-results">
-      <div className="search-results__ui-container">
-        <h2 className="search-results__header">Search Your Scream</h2>
+    <div className="search">
+      <div className="search__results--ui-container">
+        <h2 className="search__header">Search Your Scream</h2>
 
         <input
           ref={searchInput}
           onChange={(ev) => setQuery(ev.target.value)}
           placeholder="Movie title"
-        />
+        className="search__input"/>
 
-        <button onClick={() => searchMovies(query)}>Search</button>
-      </div>
-
+        <button className="search__button" onClick={() => searchMovies(query)}>Search</button>
       {!!searchResults.length &&
         searchResults.map((searchResult) => (
-          <div className="search-result" key={searchResult.id}>
-            <h2 className="search-result__title">{searchResult.title}</h2>
+          <div key={searchResult.id}>
+            <div className="card">
+            <div className="card__side card__side--front">
             <img
               src={`https://image.tmdb.org/t/p/original${searchResult.poster_path}`}
-              alt="Movie poster"
-            />
-            <h3>IMDB Rating: {searchResult.vote_average}</h3>
-            <h3>Release Date: {searchResult.release_date}</h3>
-            <h4>Overview: {searchResult.overview}</h4>
+              alt="Movie poster"            className="card__picture"/>
+            <div className="card__side card__side--back">
+            <h2 className="card__title">{searchResult.title}</h2>
+            <h3 className="card__details"><strong>IMDB Rating: </strong> {searchResult.vote_average}</h3>
+            <h3 className="card__details"><strong>Release Date: </strong>{searchResult.release_date}</h3>
+            <h3 className="card__details"><strong>Overview: </strong>{searchResult.overview}</h3>
+          </div>
+          </div>
+          </div>
           </div>
         ))}
-    </div>
+        </div>
+</div>
   );
 }
