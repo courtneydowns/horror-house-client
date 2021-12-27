@@ -20,7 +20,12 @@ export default function SearchResult() {
 
     results = results
       .filter((result) => result.genre_ids.includes(27))
-      .map((result) => new Date(result.release_date).toLocaleDateString());
+      .map((result) => ({
+        ...result,
+        release_date: new Date(result.release_date).toLocaleDateString()
+      }));
+
+    console.log(results);
 
     setSearchResults(results || []);
 
@@ -39,28 +44,41 @@ export default function SearchResult() {
           ref={searchInput}
           onChange={(ev) => setQuery(ev.target.value)}
           placeholder="Movie title"
-        className="search__input"/>
+          className="search__input"
+        />
 
-        <button className="search__button" onClick={() => searchMovies(query)}>Search</button>
-      {!!searchResults.length &&
-        searchResults.map((searchResult) => (
-          <div key={searchResult.id}>
-            <div className="card">
-            <div className="card__side card__side--front">
-            <img
-              src={`https://image.tmdb.org/t/p/original${searchResult.poster_path}`}
-              alt="Movie poster"            className="card__picture"/>
-            <div className="card__side card__side--back">
-            <h2 className="card__title">{searchResult.title}</h2>
-            <h3 className="card__details"><strong>IMDB Rating: </strong> {searchResult.vote_average}</h3>
-            <h3 className="card__details"><strong>Release Date: </strong>{searchResult.release_date}</h3>
-            <h3 className="card__details"><strong>Overview: </strong>{searchResult.overview}</h3>
-          </div>
-          </div>
-          </div>
-          </div>
-        ))}
-        </div>
-</div>
+        <button className="search__button" onClick={() => searchMovies(query)}>
+          Search
+        </button>
+        {!!searchResults.length &&
+          searchResults.map((searchResult) => (
+            <div key={searchResult.id}>
+              <div className="card">
+                <div className="card__side card__side--front">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${searchResult.poster_path}`}
+                    alt="Movie poster"
+                    className="card__picture"
+                  />
+                  <div className="card__side card__side--back">
+                    <h2 className="card__title">{searchResult.title}</h2>
+                    <h3 className="card__details">
+                      <strong>IMDB Rating: </strong> {searchResult.vote_average}
+                    </h3>
+                    <h3 className="card__details">
+                      <strong>Release Date: </strong>
+                      {searchResult.release_date}
+                    </h3>
+                    <h3 className="card__details">
+                      <strong>Overview: </strong>
+                      {searchResult.overview}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
