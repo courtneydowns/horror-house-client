@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import theme from './theme';
 import { ThemeProvider } from '@mui/material/styles';
 import './css/style.css';
-import './components/navbar/Navbar';
+// import './components/navbar/Navbar';
 import Homepage from './components/homepage/Homepage';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
-import NavDrawer from './components/navbar/Navbar';
+// import NavDrawer from './components/navbar/Navbar';
 import SearchResults from './components/SearchMovie/SearchResults';
 import MovieDatabase from './components/movieDatabase/MovieDatabase';
 
@@ -31,18 +31,6 @@ export default function App() {
     localStorage.clear();
     setSessionToken('');
   };
-
-  // const protectedViews = () => {
-  //   return sessionToken === localStorage.getItem("token") ? (
-  //     <Homepage token={sessionToken} clearToken={clearToken} />
-  //   ) : (
-  //     <Auth token={sessionToken} updateToken={updateToken} />
-  //   );
-  // };
-  // {!sessionToken && <Sitebar clickLogout={clearToken} />}
-  {
-    /* <Sitebar clickLogout={clearToken} /> */
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -74,9 +62,7 @@ export default function App() {
             )} */}
 
             <>
-              <header>
-                <NavDrawer clearToken={clearToken} />
-              </header>
+              <header>{/* <NavDrawer clearToken={clearToken} /> */}</header>
               <Route exact path="/home">
                 <Homepage token={sessionToken} />
               </Route>
