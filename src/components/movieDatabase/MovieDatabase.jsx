@@ -26,7 +26,7 @@ export default function LoadDatabase() {
               src={`https://image.tmdb.org/t/p/original${databaseResult.poster_path}`}
               alt="Movie poster"
             className="card__picture"/>
-            <div className="card__side card__side--back"></div>
+            <div className="card__side card__side--back">
             <h1 className="card__title"> {databaseResult.title}
             </h1>
             <h3 className="card__details">
@@ -39,9 +39,11 @@ export default function LoadDatabase() {
               <strong>Overview: </strong> {databaseResult.overview}
             </h3>
           </div>
+          </div>
         ))}
 </div>
 </div>
 </div>
+
   );
 }

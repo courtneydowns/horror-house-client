@@ -7,7 +7,7 @@ import './components/navbar/Navbar';
 import Homepage from './components/homepage/Homepage';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
-import Navbar from './components/navbar/Navbar';
+import NavDrawer from './components/navbar/Navbar';
 import SearchResults from './components/SearchMovie/SearchResults';
 import MovieDatabase from './components/movieDatabase/MovieDatabase';
 
@@ -75,7 +75,7 @@ export default function App() {
 
             <>
               <header>
-                <Navbar clearToken={clearToken} />
+                <NavDrawer clearToken={clearToken} />
               </header>
               <Route exact path="/home">
                 <Homepage token={sessionToken} />

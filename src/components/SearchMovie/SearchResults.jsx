@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import './SearchResults.scss';
+// import './SearchResults.scss';
 
 export default function SearchResult() {
   const searchInput = useRef(null);
@@ -34,6 +34,9 @@ export default function SearchResult() {
         `No results for horror movies with title "${searchQuery}." Try a different search.`
       );
   }
+
+  
+
 
   return (
     <div className="search">
